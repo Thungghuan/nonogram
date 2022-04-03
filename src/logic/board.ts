@@ -4,18 +4,24 @@ export const board = ref<number[][]>([])
 export const rows = ref(5)
 export const cols = ref(5)
 
+export const colCount = ref<number[][]>([])
+export const rowCount = ref<number[][]>([])
+
 const chance = 0.55
 
 export const generateBoard = () => {
   board.value = Array.from({ length: rows.value }, () =>
     Array.from({ length: cols.value }, () => (Math.random() < chance ? 1 : 0))
   )
+
+  getColCount(board)
+  getRowCount(board)
 }
 
-export const getRowCount = (board: Ref<number[][]>): Ref<number[][]> => {
+export const getRowCount = (board: Ref<number[][]>) => {
   const rows = board.value.length
   const cols = board.value[0].length
-  const rowCount: number[][] = Array.from({ length: rows }, () => [])
+  rowCount.value = Array.from({ length: rows }, () => [])
 
   for (let r = 0; r < rows; ++r) {
     let continueOne = 0
@@ -26,19 +32,17 @@ export const getRowCount = (board: Ref<number[][]>): Ref<number[][]> => {
       continueOne++
 
       if (c === cols - 1 || board.value[r][c + 1] === 0) {
-        rowCount[r].push(continueOne)
+        rowCount.value[r].push(continueOne)
         continueOne = 0
       }
     }
   }
-
-  return ref(rowCount)
 }
 
-export const getColCount = (board: Ref<number[][]>): Ref<number[][]> => {
+export const getColCount = (board: Ref<number[][]>) => {
   const rows = board.value.length
   const cols = board.value[0].length
-  const colCount: number[][] = Array.from({ length: cols }, () => [])
+  colCount.value = Array.from({ length: cols }, () => [])
 
   for (let c = 0; c < cols; ++c) {
     let continueOne = 0
@@ -49,11 +53,9 @@ export const getColCount = (board: Ref<number[][]>): Ref<number[][]> => {
       continueOne++
 
       if (r === rows - 1 || board.value[r + 1][c] === 0) {
-        colCount[c].push(continueOne)
+        colCount.value[c].push(continueOne)
         continueOne = 0
       }
     }
   }
-
-  return ref(colCount)
 }

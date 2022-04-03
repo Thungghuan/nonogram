@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { board, getRowCount, rows } from '../logic'
-
-const rowCount = getRowCount(board)
+import { rowCount, rows } from '../logic'
 </script>
 
 <template>

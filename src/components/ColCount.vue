@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { board, cols, getColCount } from '../logic'
-
-const colCount = getColCount(board)
+import { colCount, cols } from '../logic'
 </script>
 
 <template>
