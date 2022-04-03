@@ -1,16 +1,25 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Board from './components/Board.vue'
+import ColCount from './components/ColCount.vue'
+import RowCount from './components/RowCount.vue'
+</script>
 
 <template>
-  <img w-20 h-20 rd-10 alt="Thungghuan" src="./assets/Thungghuan.jpg" />
-</template>
+  <div w100vw h100vh flex justify-center items-center font-mono>
+    <div mxauto w60vw h80vh flex="~ col" items-center>
+      <div my6 text-4xl font-bold uppercase>Nonogram</div>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+      <div b-2>
+        <div m2>
+          <div flex="~ col">
+            <ColCount />
+            <div flex>
+              <RowCount />
+              <Board />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
