@@ -1,14 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { cols } from '../logic'
+import { board, cols, getColCount } from '../logic'
 
-const colCount = ref([[1], [1, 2], [1, 2], [1, 2, 3], [1]])
+const colCount = getColCount(board)
 </script>
 
 <template>
-  <div flex self-end>
-    <div v-for="i in cols" flex="~ col" m="0.5" w3vw items-center justify-end>
-      <div v-for="v in colCount[i - 1]">{{ v }}</div>
+  <div flex self-end italic>
+    <div
+      v-for="(_, c) in cols"
+      flex="~ col"
+      m="0.5"
+      w3vw
+      items-center
+      justify-end
+    >
+      <div v-for="v in colCount[c]">{{ v }}</div>
     </div>
   </div>
 </template>
