@@ -14,10 +14,10 @@ generateBoard()
 
       <div b-2>
         <div m2>
-          <div flex="~ col">
-            <ColCount />
-            <div flex>
-              <RowCount />
+          <div flex>
+            <RowCount />
+            <div flex="~ col">
+              <ColCount />
               <Board />
             </div>
           </div>

@@ -1,8 +1,8 @@
 import { ref, Ref } from 'vue'
 
 export const board = ref<number[][]>([])
-export const rows = ref(10)
-export const cols = ref(10)
+export const rows = ref(5)
+export const cols = ref(5)
 
 const chance = 0.55
 

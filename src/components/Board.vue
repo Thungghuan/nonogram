@@ -10,7 +10,7 @@ const getBlockClass = (state: number) => {
   <div flex="~ col">
     <div v-for="(_, r) in rows" flex>
       <template v-for="(_, c) in cols">
-        <div m="0.5" w3vw h3vw b :class="getBlockClass(board[r][c])"></div>
+        <div m="0.25" w3vw h3vw b :class="getBlockClass(board[r][c])"></div>
       </template>
     </div>
   </div>

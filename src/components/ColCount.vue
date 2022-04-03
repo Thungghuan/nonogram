@@ -5,11 +5,11 @@ const colCount = getColCount(board)
 </script>
 
 <template>
-  <div flex self-end italic>
+  <div px="0.5" flex self-end italic>
     <div
       v-for="(_, c) in cols"
       flex="~ col"
-      m="0.8"
+      m="0.5"
       w3vw
       items-center
       justify-end
