@@ -12,7 +12,19 @@ generateBoard()
     <div mxauto w60vw h80vh flex="~ col" items-center>
       <div my6 text-4xl font-bold uppercase>Nonogram</div>
 
-      <div b-2 my4>
+      <div
+        p3
+        b
+        bg-green-300
+        rd-xl
+        cursor-pointer
+        select-none
+        @click="generateBoard"
+      >
+        Generate
+      </div>
+
+      <div b-2 my4 select-none>
         <div m2>
           <div flex>
             <RowCount />
@@ -23,8 +35,6 @@ generateBoard()
           </div>
         </div>
       </div>
-
-      <button @click="generateBoard">Generate</button>
     </div>
   </div>
 </template>

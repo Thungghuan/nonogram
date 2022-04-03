@@ -8,7 +8,7 @@ import { colCount, cols } from '../logic'
       v-for="(_, c) in cols"
       flex="~ col"
       m="0.5"
-      w3vw
+      w8
       items-center
       justify-end
     >
