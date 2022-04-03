@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { generateBoard } from './logic'
 import Board from './components/Board.vue'
 import ColCount from './components/ColCount.vue'
 import RowCount from './components/RowCount.vue'
+
+generateBoard()
 </script>
 
 <template>

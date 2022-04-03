@@ -9,7 +9,7 @@ const colCount = getColCount(board)
     <div
       v-for="(_, c) in cols"
       flex="~ col"
-      m="0.5"
+      m="0.8"
       w3vw
       items-center
       justify-end

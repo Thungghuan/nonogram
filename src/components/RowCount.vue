@@ -5,9 +5,9 @@ const rowCount = getRowCount(board)
 </script>
 
 <template>
-  <div flex="~ col" italic>
-    <div v-for="(_, r) in rows" flex m="0.5" h3vw items-center justify-end>
-      <div v-for="v in rowCount[r]" m="1.5">{{ v }}</div>
+  <div flex="~ col 1" italic>
+    <div v-for="(_, r) in rows" m="0.8" flex items-center justify-end>
+      <div v-for="v in rowCount[r]" m="0.5">{{ v }}</div>
     </div>
   </div>
 </template>
