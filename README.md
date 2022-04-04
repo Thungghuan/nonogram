@@ -1,5 +1,5 @@
 # Nonogram
 
-> 挖坑，做个[nonogram](https://en.wikipedia.org/wiki/Nonogram)(数织)
+A [nonogram](https://en.wikipedia.org/wiki/Nonogram) **_(Chinese name: 数织)_** puzzle game.
 
-是这么个[玩意](https://cn.puzzle-nonograms.com/)
+Deploy on Netlify: [https://vue-nonogram.netlify.app](https://vue-nonogram.netlify.app/)

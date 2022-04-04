@@ -19,7 +19,18 @@ generateBoard()
     @contextmenu.prevent="toggleMarkType"
   >
     <div mxauto p2 flex="~ col" items-center>
-      <div my text-4xl font-bold uppercase>Nonogram</div>
+      <div flex items-center>
+        <div my text-4xl font-bold uppercase>Nonogram</div>
+        <a
+          icon-btn
+          rel="noreferrer"
+          href="https://github.com/Thungghuan/nonogram"
+          target="_blank"
+          title="GitHub - Thungghuan"
+        >
+          <div mx-2 text-2xl i-carbon-logo-github></div>
+        </a>
+      </div>
 
       <div flex>
         <div btn @click="showAnswer = true">Submit</div>
