@@ -1,5 +1,4 @@
 import { describe, it, expect } from 'vitest'
-import { ref } from 'vue'
 import {
   generateBoard,
   board,
@@ -18,7 +17,7 @@ describe('board', () => {
   })
 
   it('get row count', () => {
-    const board = ref([
+    const board = [
       [0, 0, 0, 0, 0, 0, 1, 1],
       [1, 1, 1, 0, 0, 0, 0, 1],
       [0, 1, 0, 1, 1, 0, 1, 1],
@@ -27,9 +26,9 @@ describe('board', () => {
       [1, 1, 0, 0, 0, 1, 1, 1],
       [1, 1, 1, 0, 1, 0, 0, 0],
       [1, 1, 0, 0, 1, 0, 0, 1]
-    ])
+    ]
 
-    expect(getRowCount(board).value).toEqual([
+    expect(getRowCount(board)).toEqual([
       [2],
       [3, 1],
       [1, 2, 2],
@@ -42,7 +41,7 @@ describe('board', () => {
   })
 
   it('get column count', () => {
-    const board = ref([
+    const board = [
       [0, 0, 0, 0, 0, 0, 1, 1],
       [1, 1, 1, 0, 0, 0, 0, 1],
       [0, 1, 0, 1, 1, 0, 1, 1],
@@ -51,9 +50,9 @@ describe('board', () => {
       [1, 1, 0, 0, 0, 1, 1, 1],
       [1, 1, 1, 0, 1, 0, 0, 0],
       [1, 1, 0, 0, 1, 0, 0, 1]
-    ])
+    ]
 
-    expect(getColCount(board).value).toEqual([
+    expect(getColCount(board)).toEqual([
       [1, 5],
       [3, 3],
       [1, 2, 1],
