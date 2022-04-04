@@ -11,13 +11,17 @@ export const rowCount = ref<number[][]>([])
 
 const chance = 0.5
 
+export const resetBoard = () => {
+  board.value = Array.from({ length: rows.value }, () =>
+    Array.from({ length: cols.value }, () => 0)
+  )
+}
+
 export const generateBoard = () => {
   showAnswer.value = false
   markType.value = 'check'
 
-  board.value = Array.from({ length: rows.value }, () =>
-    Array.from({ length: cols.value }, () => 0)
-  )
+  resetBoard()
 
   solution.value = Array.from({ length: rows.value }, () =>
     Array.from({ length: cols.value }, () => (Math.random() < chance ? 1 : 0))
