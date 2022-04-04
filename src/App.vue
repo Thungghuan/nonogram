@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { showAnswer, generateBoard, toggleMarkType } from './logic'
+import { showAnswer, generateBoard, pointerType, toggleMarkType } from './logic'
 import Board from './components/Board.vue'
 import ColCount from './components/ColCount.vue'
 import RowCount from './components/RowCount.vue'
@@ -7,6 +7,10 @@ import Answer from './components/Answer.vue'
 import Switch from './components/Switch.vue'
 
 generateBoard()
+
+const onPointerEnter = (e: PointerEvent) => {
+  pointerType.value = e.pointerType
+}
 </script>
 
 <template>
@@ -18,6 +22,7 @@ generateBoard()
     items-center
     font-mono
     @contextmenu.prevent="toggleMarkType"
+    @pointerenter="onPointerEnter"
   >
     <div mxauto p2 flex="~ col" items-center>
       <div flex items-center>
