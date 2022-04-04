@@ -4,7 +4,7 @@ import AnswerBoard from './AnswerBoard.vue'
 </script>
 
 <template>
-  <div max-w-75vw of-auto px6 py4 b-2 flex="~ col" items-center>
+  <div max-w-88vw of-auto px6 py4 b-2 flex="~ col" items-center>
     <div text-2xl font-bold>Answer:</div>
 
     <div my2 flex="~ col" sm:flex="row" gap-5 justify-evenly>

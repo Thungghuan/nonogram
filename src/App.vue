@@ -11,7 +11,7 @@ generateBoard()
 
 <template>
   <div
-    w80vw
+    w90vw
     flex
     justify-center
     items-center
@@ -39,7 +39,7 @@ generateBoard()
 
       <Switch />
 
-      <div max-w-70vw of-auto b-2 my4 select-none>
+      <div max-w-88vw of-auto b-2 my4 select-none>
         <div m2>
           <div flex>
             <RowCount />
@@ -59,7 +59,7 @@ generateBoard()
 <style>
 #app {
   margin: 0 auto;
-  max-width: 80vw;
+  max-width: 96vw;
   overflow: auto;
 }
 </style>
