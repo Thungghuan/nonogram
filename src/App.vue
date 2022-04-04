@@ -11,6 +11,7 @@ generateBoard()
 
 <template>
   <div
+    mxauto
     w90vw
     flex
     justify-center
