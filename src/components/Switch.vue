@@ -28,7 +28,7 @@ const getSwitchClass = () => {
       </div>
     </div>
 
-    <div my1 flex items-center>
+    <div my1 items-center hidden sm:flex>
       <div i-ph-mouse-duotone rotate-y-180 />
       <div mx1 text-xs italic text-gray-600>Right click to toggle</div>
     </div>
