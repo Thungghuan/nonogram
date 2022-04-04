@@ -3,7 +3,9 @@ import { board, rows, cols, showAnswer, markType } from '../logic'
 
 const getBlockClass = (state: number) => {
   if (state === 0) {
-    return 'bg-gray-400 opacity-30 hover:opacity-90'
+    return (
+      'bg-gray-400 opacity-30' + (showAnswer.value ? '' : ' hover:opacity-90')
+    )
   } else if (state === 1) {
     return 'bg-black'
   } else if (state === -1) {
