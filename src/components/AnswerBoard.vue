@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { board, rows, cols, showAnswer } from '../logic'
+import { defineProps, Ref } from 'vue'
+import { rows, cols } from '../logic'
+
+const props = defineProps<{
+  board: number[][]
+}>()
+
+const { board } = props
 
 const getBlockClass = (state: number) => {
   return state === 1 && 'bg-black'
-}
-
-const markBlock = (row: number, column: number) => {
-  board.value[row][column] ^= 1
 }
 </script>
 
@@ -19,8 +22,6 @@ const markBlock = (row: number, column: number) => {
           w8
           h8
           b
-          cursor-pointer
-          @click="!showAnswer && markBlock(r, c)"
           :class="getBlockClass(board[r][c])"
         />
       </template>

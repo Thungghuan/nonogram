@@ -8,7 +8,10 @@ export default defineConfig({
   plugins: [
     Vue(),
     UnoCSS({
-      presets: [presetUno(), presetAttributify()]
+      presets: [presetUno(), presetAttributify()],
+      shortcuts: {
+        'btn': 'm2 py2 px4 b bg-green-300 rd-lg cursor-pointer select-none'
+      }
     })
   ]
 })
