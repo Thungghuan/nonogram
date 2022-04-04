@@ -1,6 +1,7 @@
 import { ref, Ref } from 'vue'
 
 export const board = ref<number[][]>([])
+export const solution = ref<number[][]>([])
 export const rows = ref(5)
 export const cols = ref(5)
 
@@ -11,11 +12,15 @@ const chance = 0.55
 
 export const generateBoard = () => {
   board.value = Array.from({ length: rows.value }, () =>
+    Array.from({ length: cols.value }, () => 0)
+  )
+
+  solution.value = Array.from({ length: rows.value }, () =>
     Array.from({ length: cols.value }, () => (Math.random() < chance ? 1 : 0))
   )
 
-  getColCount(board)
-  getRowCount(board)
+  getColCount(solution)
+  getRowCount(solution)
 }
 
 export const getRowCount = (board: Ref<number[][]>) => {
