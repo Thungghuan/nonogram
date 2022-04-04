@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 
 export * from './board'
+export * from './setting'
 
 export const showAnswer = ref(false)
 

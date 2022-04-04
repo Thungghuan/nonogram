@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { showAnswer, generateBoard, toggleMarkType } from './logic'
+import {
+  showAnswer,
+  generateBoard,
+  toggleMarkType,
+  showSettingModal
+} from './logic'
 import Board from './components/Board.vue'
 import ColCount from './components/ColCount.vue'
 import RowCount from './components/RowCount.vue'
 import Answer from './components/Answer.vue'
 import Switch from './components/Switch.vue'
+import SettingModal from './components/SettingModal.vue'
 
 generateBoard()
 </script>
@@ -20,6 +26,8 @@ generateBoard()
     @contextmenu.prevent="toggleMarkType"
   >
     <div mxauto p2 flex="~ col" items-center>
+      <SettingModal />
+
       <div flex items-center>
         <div my text-4xl font-bold uppercase>Nonogram</div>
         <a
@@ -31,6 +39,9 @@ generateBoard()
         >
           <div mx-2 text-2xl i-carbon-logo-github></div>
         </a>
+        <span icon-btn @click="showSettingModal = true">
+          <div text-2xl i-carbon-settings />
+        </span>
       </div>
 
       <div flex>
