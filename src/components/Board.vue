@@ -22,7 +22,7 @@ const markBlock = (row: number, column: number) => {
   <div flex="~ col">
     <div v-for="(_, r) in rows" flex>
       <template v-for="(_, c) in cols">
-        <div m="0.25" w8 h8 b cursor-pointer>
+        <div m="0.5" w8 h8 b box-border cursor-pointer>
           <div
             w8
             h8

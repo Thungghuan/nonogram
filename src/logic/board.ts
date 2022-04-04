@@ -3,13 +3,13 @@ import { showAnswer, markType } from '.'
 
 export const board = ref<number[][]>([])
 export const solution = ref<number[][]>([])
-export const rows = ref(5)
-export const cols = ref(5)
+export const rows = ref(6)
+export const cols = ref(6)
 
 export const colCount = ref<number[][]>([])
 export const rowCount = ref<number[][]>([])
 
-const chance = 0.55
+const chance = 0.5
 
 export const generateBoard = () => {
   showAnswer.value = false

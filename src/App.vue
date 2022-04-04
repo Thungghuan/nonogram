@@ -11,15 +11,14 @@ generateBoard()
 
 <template>
   <div
-    w100vw
-    h100vh
+    w80vw
     flex
     justify-center
     items-center
     font-mono
     @contextmenu.prevent="toggleMarkType"
   >
-    <div mxauto w60vw h80vh flex="~ col" items-center>
+    <div mxauto p2 flex="~ col" items-center>
       <div my text-4xl font-bold uppercase>Nonogram</div>
 
       <div flex>
@@ -29,7 +28,7 @@ generateBoard()
 
       <Switch />
 
-      <div b-2 my4 select-none>
+      <div max-w-70vw of-auto b-2 my4 select-none>
         <div m2>
           <div flex>
             <RowCount />
@@ -45,3 +44,11 @@ generateBoard()
     </div>
   </div>
 </template>
+
+<style>
+#app {
+  margin: 0 auto;
+  max-width: 80vw;
+  overflow: auto;
+}
+</style>
