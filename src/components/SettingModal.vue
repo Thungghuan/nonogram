@@ -5,6 +5,13 @@ import { showSettingModal, rows, cols, generateBoard } from '../logic'
 import Counter from './Counter.vue'
 
 const settingModalRef = ref(null)
+const getSettingModalClass = () => {
+  if (showSettingModal.value) {
+    return 'translate-y-0'
+  } else {
+    return '-translate-y-full'
+  }
+}
 
 const isLinked = ref(true)
 const getLinkClass = () => {
@@ -32,7 +39,16 @@ const generateNew = () => {
 </script>
 
 <template>
-  <div wfull h100vh absolute z-5 v-if="showSettingModal">
+  <div
+    wfull
+    h100vh
+    absolute
+    z-5
+    transition-all
+    duration-300
+    ease-in-out
+    :class="getSettingModalClass()"
+  >
     <div wfull shadow-gray-300 shadow-2xl bg-white ref="settingModalRef">
       <div py8 flex="~ col" items-center>
         <div text-sm>Set the width and height</div>
