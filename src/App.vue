@@ -63,7 +63,7 @@ generateBoard()
         </span>
       </div>
 
-      <div flex>
+      <div flex items-center>
         <div btn bg-red-500 hover:bg-red-800 @click="reset">
           {{ showAnswer ? 'Replay this game' : 'Reset' }}
         </div>
