@@ -16,6 +16,11 @@ import Switch from './components/Switch.vue'
 import SettingModal from './components/SettingModal.vue'
 import HelpModal from './components/HelpModal.vue'
 
+const reset = () => {
+  resetBoard()
+  generateBoard()
+}
+
 const newGame = () => {
   resetBoard()
   resetSolution()
@@ -59,7 +64,7 @@ generateBoard()
       </div>
 
       <div flex>
-        <div btn bg-red-500 hover:bg-red-800 @click="resetBoard">Reset</div>
+        <div btn bg-red-500 hover:bg-red-800 @click="reset">{{ showAnswer ? 'Replay this game' : 'Reset'}}</div>
         <div btn @click="showAnswer = true">Submit</div>
         <div btn @click="newGame">New Game</div>
       </div>
