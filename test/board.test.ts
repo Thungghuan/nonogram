@@ -122,4 +122,20 @@ describe('board', () => {
     ]
     expect(validate(correctSolutionWithCross, solution)).toBe(0)
   })
+
+  it('empty validate', () => {
+    const solution = [
+      [0, 1, 1],
+      [0, 0, 0],
+      [1, 1, 0]
+    ]
+
+    const emptyAnswer = [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0]
+    ]
+
+    expect(validate(emptyAnswer, solution)).toBe(2)
+  })
 })
