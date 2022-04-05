@@ -3,8 +3,8 @@ import { useStorage } from '@vueuse/core'
 import { showAnswer, markType } from '.'
 
 const chance = 0.5
-export const defaultRow = 6
-export const defaultCol = 6
+export const defaultRow = 5
+export const defaultCol = 5
 
 export const rows = useStorage('rows', defaultRow)
 export const cols = useStorage('cols', defaultCol)
@@ -44,7 +44,7 @@ export const generateBoard = () => {
 
   if (cols.value < 2) cols.value = defaultCol
   if (rows.value < 2) rows.value = defaultRow
-  
+
   resetBoard()
   resetSolution()
 
@@ -61,11 +61,11 @@ export const getRowCount = (board: number[][]): number[][] => {
     let continueOne = 0
 
     for (let c = 0; c < cols; ++c) {
-      if (board[r][c] === 0) continue
+      if (board[r][c] === 0 || board[r][c] === -1) continue
 
       continueOne++
 
-      if (c === cols - 1 || board[r][c + 1] === 0) {
+      if (c === cols - 1 || board[r][c + 1] === 0 || board[r][c + 1] === -1) {
         rowCount[r].push(continueOne)
         continueOne = 0
       }
@@ -84,11 +84,11 @@ export const getColCount = (board: number[][]): number[][] => {
     let continueOne = 0
 
     for (let r = 0; r < rows; ++r) {
-      if (board[r][c] === 0) continue
+      if (board[r][c] === 0 || board[r][c] === -1) continue
 
       continueOne++
 
-      if (r === rows - 1 || board[r + 1][c] === 0) {
+      if (r === rows - 1 || board[r + 1][c] === 0 || board[r + 1][c] === -1) {
         colCount[c].push(continueOne)
         continueOne = 0
       }
@@ -127,6 +127,7 @@ export const validate = (
 
   for (let r = 0; r < answer.length; ++r) {
     for (let c = 0; c < answer[r].length; ++c) {
+      if (answer[r][c] === -1 && solution[r][c] === 0) continue
       if (answer[r][c] !== solution[r][c]) return 1
     }
   }
