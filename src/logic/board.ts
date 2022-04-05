@@ -45,9 +45,6 @@ export const generateBoard = () => {
   if (cols.value < 2) cols.value = defaultCol
   if (rows.value < 2) rows.value = defaultRow
 
-  resetBoard()
-  resetSolution()
-
   rowCount.value = getRowCount(solution.value)
   colCount.value = getColCount(solution.value)
 }
