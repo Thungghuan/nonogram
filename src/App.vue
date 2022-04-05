@@ -58,8 +58,6 @@ generateBoard()
         <div btn @click="newGame">New Game</div>
       </div>
 
-      <Switch />
-
       <div max-w-88vw of-auto b-2 my4 select-none>
         <div m2>
           <div flex>
@@ -71,6 +69,8 @@ generateBoard()
           </div>
         </div>
       </div>
+
+      <Switch />
 
       <Answer v-if="showAnswer" />
     </div>
