@@ -87,3 +87,39 @@ export const getColCount = (board: number[][]): number[][] => {
 
   return colCount
 }
+
+type ValidateResult =
+  | 0 // correct answer and equal to the solution
+  | 1 // correct but not equal to the solution
+  | 2 // incorrect answer
+
+export const validate = (
+  answer: number[][],
+  solution: number[][]
+): ValidateResult => {
+  const answerRowCount = getRowCount(answer)
+  const solutionRowCount = getRowCount(solution)
+
+  for (let r = 0; r < answerRowCount.length; ++r) {
+    for (let i = 0; i < answerRowCount[r].length; ++i) {
+      if (answerRowCount[r][i] !== solutionRowCount[r][i]) return 2
+    }
+  }
+
+  const answerColCount = getColCount(answer)
+  const solutionColCount = getColCount(solution)
+
+  for (let c = 0; c < answerColCount.length; ++c) {
+    for (let i = 0; i < answerColCount[c].length; ++i) {
+      if (answerColCount[c][i] !== solutionColCount[c][i]) return 2
+    }
+  }
+
+  for (let r = 0; r < answer.length; ++r) {
+    for (let c = 0; c < answer[r].length; ++c) {
+      if (answer[r][c] !== solution[r][c]) return 1
+    }
+  }
+
+  return 0
+}
