@@ -1,7 +1,6 @@
 import { ref } from 'vue'
 
 export * from './board'
-export * from './setting'
 
 export const showAnswer = ref(false)
 
@@ -11,3 +10,6 @@ export const toggleMarkType = () => {
 
   markType.value = markType.value === 'check' ? 'cross' : 'check'
 }
+
+export const showSettingModal = ref(false)
+export const showHelpModal = ref(false)

@@ -12,6 +12,10 @@ import {
 import Counter from './Counter.vue'
 
 const settingModalRef = ref(null)
+onClickOutside(settingModalRef, () => {
+  showSettingModal.value = false
+})
+
 const getSettingModalClass = () => {
   if (showSettingModal.value) {
     return 'translate-y-0'
@@ -31,10 +35,6 @@ const getLinkClass = () => {
 
 const rowSet = ref(rows.value)
 const colSet = ref(cols.value)
-
-onClickOutside(settingModalRef, () => {
-  showSettingModal.value = false
-})
 
 const generateNew = () => {
   rows.value = rowSet.value

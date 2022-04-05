@@ -4,6 +4,7 @@ import {
   generateBoard,
   toggleMarkType,
   showSettingModal,
+  showHelpModal,
   resetBoard,
   resetSolution
 } from './logic'
@@ -13,6 +14,7 @@ import RowCount from './components/RowCount.vue'
 import Answer from './components/Answer.vue'
 import Switch from './components/Switch.vue'
 import SettingModal from './components/SettingModal.vue'
+import HelpModal from './components/HelpModal.vue'
 
 const newGame = () => {
   resetBoard()
@@ -35,8 +37,12 @@ generateBoard()
   >
     <div mxauto p2 flex="~ col" items-center>
       <SettingModal />
+      <HelpModal />
 
       <div flex items-center>
+        <span mx-2 icon-btn @click="showHelpModal = true">
+          <div text-2xl i-carbon-help />
+        </span>
         <div my text-4xl font-bold uppercase>Nonogram</div>
         <a
           icon-btn
