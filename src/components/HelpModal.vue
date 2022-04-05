@@ -37,7 +37,7 @@ const locale = useStorage('help-locale', 'en')
   >
     <div wfull shadow-gray-300 shadow-sm bg-white ref="helpModalRef">
       <div py8 flex="~ col" items-center>
-        <div text-2xl uppercase>help</div>
+        <div text-2xl uppercase>{{ locale === 'en' ? 'help' : '帮助' }}</div>
 
         <div my flex items-center>
           <div
@@ -51,9 +51,6 @@ const locale = useStorage('help-locale', 'en')
           >
             {{ l.name }}
           </div>
-
-          <!-- <div mx2 underline cursor-pointer @click="locale = 'en'">English</div>
-          <div mx2 underline cursor-pointer @click="locale = 'zh-CN'">中文</div> -->
         </div>
 
         <div my3 max-w-80vw w-60ch indent-md text-sm text-justify text-gray-800>
@@ -72,6 +69,10 @@ const locale = useStorage('help-locale', 'en')
               eight, and three filled squares, in that order, with at least one
               blank square between successive sets.
             </p>
+            <p>
+              -- from
+              <a href="https://en.wikipedia.org/wiki/Nonogram">wikipedia</a>
+            </p>
           </template>
           <template v-else-if="locale === 'zh-CN'">
             <div text-left text-lg indent-lg>
@@ -85,6 +86,12 @@ const locale = useStorage('help-locale', 'en')
               </p>
               <p>
                 传统上，玩家是以黑色填满格子，和以“×”号标记一定不需要填充的格子。
+              </p>
+              <p text-right>
+                -- 参考
+                <a href="https://zh.wikipedia.org/wiki/%E6%95%B8%E7%B9%94">
+                  维基百科
+                </a>
               </p>
             </div>
           </template>
