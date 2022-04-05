@@ -1,15 +1,26 @@
 import { ref } from 'vue'
+import { useStorage } from '@vueuse/core'
 import { showAnswer, markType } from '.'
 
-export const board = ref<number[][]>([])
-export const solution = ref<number[][]>([])
-export const rows = ref(6)
-export const cols = ref(6)
+const chance = 0.5
+export const rows = useStorage('rows', 6)
+export const cols = useStorage('cols', 6)
+export const board = useStorage(
+  'board',
+  Array.from({ length: rows.value }, () =>
+    Array.from({ length: cols.value }, () => 0)
+  )
+)
+export const solution = useStorage(
+  'solution',
+  Array.from({ length: rows.value }, () =>
+    Array.from({ length: cols.value }, () => (Math.random() < chance ? 1 : 0))
+  )
+)
 
+// no need to storage
 export const colCount = ref<number[][]>([])
 export const rowCount = ref<number[][]>([])
-
-const chance = 0.5
 
 export const resetBoard = () => {
   board.value = Array.from({ length: rows.value }, () =>
@@ -17,15 +28,15 @@ export const resetBoard = () => {
   )
 }
 
-export const generateBoard = () => {
-  showAnswer.value = false
-  markType.value = 'check'
-
-  resetBoard()
-
+export const resetSolution = () => {
   solution.value = Array.from({ length: rows.value }, () =>
     Array.from({ length: cols.value }, () => (Math.random() < chance ? 1 : 0))
   )
+}
+
+export const generateBoard = () => {
+  showAnswer.value = false
+  markType.value = 'check'
 
   rowCount.value = getRowCount(solution.value)
   colCount.value = getColCount(solution.value)

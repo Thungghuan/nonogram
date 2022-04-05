@@ -4,7 +4,8 @@ import {
   generateBoard,
   toggleMarkType,
   showSettingModal,
-  resetBoard
+  resetBoard,
+  resetSolution
 } from './logic'
 import Board from './components/Board.vue'
 import ColCount from './components/ColCount.vue'
@@ -12,6 +13,12 @@ import RowCount from './components/RowCount.vue'
 import Answer from './components/Answer.vue'
 import Switch from './components/Switch.vue'
 import SettingModal from './components/SettingModal.vue'
+
+const newGame = () => {
+  resetBoard()
+  resetSolution()
+  generateBoard()
+}
 
 generateBoard()
 </script>
@@ -48,7 +55,7 @@ generateBoard()
       <div flex>
         <div btn bg-red-500 hover:bg-red-800 @click="resetBoard">Reset</div>
         <div btn @click="showAnswer = true">Submit</div>
-        <div btn @click="generateBoard">New Game</div>
+        <div btn @click="newGame">New Game</div>
       </div>
 
       <Switch />
