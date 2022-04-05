@@ -3,8 +3,12 @@ import { useStorage } from '@vueuse/core'
 import { showAnswer, markType } from '.'
 
 const chance = 0.5
-export const rows = useStorage('rows', 6)
-export const cols = useStorage('cols', 6)
+export const defaultRow = 6
+export const defaultCol = 6
+
+export const rows = useStorage('rows', defaultRow)
+export const cols = useStorage('cols', defaultCol)
+
 export const board = useStorage(
   'board',
   Array.from({ length: rows.value }, () =>
@@ -37,6 +41,12 @@ export const resetSolution = () => {
 export const generateBoard = () => {
   showAnswer.value = false
   markType.value = 'check'
+
+  if (cols.value < 2) cols.value = defaultCol
+  if (rows.value < 2) rows.value = defaultRow
+  
+  resetBoard()
+  resetSolution()
 
   rowCount.value = getRowCount(solution.value)
   colCount.value = getColCount(solution.value)
