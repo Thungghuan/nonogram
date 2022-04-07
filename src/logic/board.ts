@@ -107,11 +107,11 @@ export const validate = (
   const answerRowCount = getRowCount(answer)
   const solutionRowCount = getRowCount(solution)
 
-  for (let r = 0; r < answerRowCount.length; ++r) {
-    if (answerRowCount[0].length === 0 && solutionRowCount[0].length !== 0)
+  for (let r = 0; r < solutionRowCount.length; ++r) {
+    if (answerRowCount[r].length === 0 && solutionRowCount[r].length !== 0)
       return 2
 
-    for (let i = 0; i < answerRowCount[r].length; ++i) {
+    for (let i = 0; i < solutionRowCount[r].length; ++i) {
       if (answerRowCount[r][i] !== solutionRowCount[r][i]) return 2
     }
   }
@@ -119,11 +119,11 @@ export const validate = (
   const answerColCount = getColCount(answer)
   const solutionColCount = getColCount(solution)
 
-  for (let c = 0; c < answerColCount.length; ++c) {
-    if (answerColCount[0].length === 0 && solutionColCount[0].length !== 0)
+  for (let c = 0; c < solutionColCount.length; ++c) {
+    if (answerColCount[c].length === 0 && solutionColCount[c].length !== 0)
       return 2
 
-    for (let i = 0; i < answerColCount[c].length; ++i) {
+    for (let i = 0; i < solutionColCount[c].length; ++i) {
       if (answerColCount[c][i] !== solutionColCount[c][i]) return 2
     }
   }
