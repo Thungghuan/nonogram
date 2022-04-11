@@ -10,6 +10,7 @@ import {
   resetSolution
 } from '../logic'
 import Counter from './Counter.vue'
+import CloseModal from './CloseModal.vue';
 
 const settingModalRef = ref(null)
 onClickOutside(settingModalRef, () => {
@@ -59,6 +60,7 @@ const generateNew = () => {
     :class="getSettingModalClass()"
   >
     <div wfull shadow-gray-300 shadow-2xl bg-white ref="settingModalRef">
+      <CloseModal @click="showSettingModal = false" />
       <div py8 flex="~ col" items-center>
         <div text-sm>Set the width and height</div>
         <div m5 grid="~ cols-2 rows-3">

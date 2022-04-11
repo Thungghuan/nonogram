@@ -1,0 +1,11 @@
+<template>
+  <div
+    absolute
+    top-0
+    right-2
+    i-carbon-close
+    text-3xl
+    text-gray-500
+    cursor-pointer
+  />
+</template>

@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { onClickOutside, useStorage } from '@vueuse/core'
 import { showHelpModal } from '../logic'
+import CloseModal from './CloseModal.vue';
 
 const helpModalRef = ref(null)
 onClickOutside(helpModalRef, () => {
@@ -36,6 +37,7 @@ const locale = useStorage('help-locale', 'en')
     :class="getHelpModalClass()"
   >
     <div wfull shadow-gray-300 shadow-sm bg-white ref="helpModalRef">
+      <CloseModal @click="showHelpModal = false" />
       <div py8 flex="~ col" items-center>
         <div text-2xl uppercase>{{ locale === 'en' ? 'help' : '帮助' }}</div>
 
