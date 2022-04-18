@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { onClickOutside } from '@vueuse/core'
 import { showSettingModal, rows, cols, reset } from '../logic'
+
+const router = useRouter()
 
 const settingModalRef = ref(null)
 onClickOutside(settingModalRef, () => {
@@ -32,7 +35,7 @@ const generateNew = () => {
   rows.value = rowSet.value
   cols.value = colSet.value
 
-  reset(true)
+  reset(router, true)
   showSettingModal.value = false
 }
 </script>

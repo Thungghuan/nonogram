@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 
+export * from './seed'
 export * from './board'
 
 export const showAnswer = ref(false)

@@ -18,11 +18,7 @@ generateBoard()
     justify-center
     items-center
     font-mono
-    @contextmenu="
-      (e) => {
-        e.preventDefault()
-      }
-    "
+    @contextmenu="(e) => e.preventDefault()"
   >
     <div mxauto p2 flex="~ col" items-center>
       <SettingModal />
@@ -48,11 +44,11 @@ generateBoard()
       </div>
 
       <div flex items-center>
-        <div btn bg-red-500 hover:bg-red-800 @click="reset()">
+        <div btn bg-red-500 hover:bg-red-800 @click="reset($router)">
           {{ showAnswer ? 'Replay' : 'Reset' }}
         </div>
         <div btn @click="showAnswer = true">Submit</div>
-        <div btn @click="reset(true)">New</div>
+        <div btn @click="reset($router, true)">New</div>
       </div>
 
       <div max-w-88vw of-auto b-2 my4 select-none>
