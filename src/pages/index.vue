@@ -30,7 +30,11 @@ generateBoard()
     justify-center
     items-center
     font-mono
-    @contextmenu="(e) => { e.preventDefault() }"
+    @contextmenu="
+      (e) => {
+        e.preventDefault()
+      }
+    "
   >
     <div mxauto p2 flex="~ col" items-center>
       <SettingModal />
