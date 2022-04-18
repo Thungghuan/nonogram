@@ -2,7 +2,6 @@
 import {
   showAnswer,
   generateBoard,
-  toggleMarkType,
   showSettingModal,
   showHelpModal,
   resetBoard,
@@ -31,7 +30,7 @@ generateBoard()
     justify-center
     items-center
     font-mono
-    @contextmenu.prevent="toggleMarkType"
+    @contextmenu="(e) => { e.preventDefault() }"
   >
     <div mxauto p2 flex="~ col" items-center>
       <SettingModal />
@@ -75,8 +74,6 @@ generateBoard()
           </div>
         </div>
       </div>
-
-      <Switch />
 
       <Answer v-if="showAnswer" />
     </div>

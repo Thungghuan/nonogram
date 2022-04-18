@@ -14,12 +14,27 @@ const getBlockClass = (state: number) => {
   }
 }
 
-const markBlock = (row: number, column: number) => {
-  if (markType.value === 'check') {
-    board.value[row][column] = board.value[row][column] === 1 ? 0 : 1
-  } else if (markType.value === 'cross') {
-    board.value[row][column] = board.value[row][column] === -1 ? 0 : -1
-  }
+const markBlock = (row: number, column: number, inversed: boolean = false) => {
+  if (showAnswer.value) return
+
+  /**
+   * - Left click (not inversed):
+   *    -1 ->  0,
+   *     0 ->  1,
+   *     1 -> -1,
+   *
+   *    [0, 1, -1]
+   *
+   * - Right click (inversed): 
+   *    -1 ->  1,
+   *     0 -> -1,
+   *     1 ->  0,
+   *
+   *    [1, -1, 0]
+   */
+  const nextState = inversed ? [1, -1, 0] : [0, 1, -1]
+
+  board.value[row][column] = nextState[board.value[row][column] + 1]
 }
 </script>
 
@@ -28,7 +43,12 @@ const markBlock = (row: number, column: number) => {
     <div v-for="(_, r) in rows" flex>
       <template v-for="(_, c) in cols">
         <div m="0.5" w8 h8 cursor-pointer :class="getBlockClass(board[r][c])">
-          <div w8 h8 @click="!showAnswer && markBlock(r, c)" />
+          <div
+            w8
+            h8
+            @click="markBlock(r, c)"
+            @contextmenu="markBlock(r, c, true)"
+          />
         </div>
       </template>
     </div>
