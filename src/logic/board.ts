@@ -33,8 +33,9 @@ export const rowCount = ref<number[][]>([])
 export const reset = (router: Router, isNew: boolean = false) => {
   board.value = resetBoard()
   if (isNew) {
-    const seed = encodeSeed(solution.value)
     solution.value = resetSolution()
+
+    const seed = encodeSeed(solution.value)
     router.replace({
       query: {
         seed
