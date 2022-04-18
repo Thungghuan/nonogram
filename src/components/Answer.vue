@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { board, solution, validate } from '../logic'
-import AnswerBoard from './AnswerBoard.vue'
 
 const state = ref(validate(board.value, solution.value))
 </script>

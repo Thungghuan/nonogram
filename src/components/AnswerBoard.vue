@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps, Ref } from 'vue'
 import { rows, cols } from '../logic'
 
 const props = defineProps<{

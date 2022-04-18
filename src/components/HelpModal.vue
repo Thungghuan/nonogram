@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import { onClickOutside, useStorage } from '@vueuse/core'
 import { showHelpModal } from '../logic'
-import CloseModal from './CloseModal.vue';
 
 const helpModalRef = ref(null)
 onClickOutside(helpModalRef, () => {

@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
+import Pages from 'vite-plugin-pages'
+import Components from 'unplugin-vue-components/vite'
 import UnoCSS from 'unocss/vite'
 import { presetAttributify, presetUno, presetIcons } from 'unocss'
 
@@ -7,6 +9,8 @@ import { presetAttributify, presetUno, presetIcons } from 'unocss'
 export default defineConfig({
   plugins: [
     Vue(),
+    Pages(),
+    Components(),
     UnoCSS({
       presets: [presetUno(), presetAttributify(), presetIcons()],
       shortcuts: {

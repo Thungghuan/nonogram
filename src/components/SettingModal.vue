@@ -9,8 +9,6 @@ import {
   resetBoard,
   resetSolution
 } from '../logic'
-import Counter from './Counter.vue'
-import CloseModal from './CloseModal.vue';
 
 const settingModalRef = ref(null)
 onClickOutside(settingModalRef, () => {
