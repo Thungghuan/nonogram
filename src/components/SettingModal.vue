@@ -1,14 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { onClickOutside } from '@vueuse/core'
-import {
-  showSettingModal,
-  rows,
-  cols,
-  generateBoard,
-  resetBoard,
-  resetSolution
-} from '../logic'
+import { showSettingModal, rows, cols, reset } from '../logic'
 
 const settingModalRef = ref(null)
 onClickOutside(settingModalRef, () => {
@@ -39,9 +32,7 @@ const generateNew = () => {
   rows.value = rowSet.value
   cols.value = colSet.value
 
-  resetBoard()
-  resetSolution()
-  generateBoard()
+  reset(true)
   showSettingModal.value = false
 }
 </script>

@@ -4,20 +4,8 @@ import {
   generateBoard,
   showSettingModal,
   showHelpModal,
-  resetBoard,
-  resetSolution
+  reset
 } from '../logic'
-
-const reset = () => {
-  resetBoard()
-  generateBoard()
-}
-
-const newGame = () => {
-  resetBoard()
-  resetSolution()
-  generateBoard()
-}
 
 generateBoard()
 </script>
@@ -60,11 +48,11 @@ generateBoard()
       </div>
 
       <div flex items-center>
-        <div btn bg-red-500 hover:bg-red-800 @click="reset">
+        <div btn bg-red-500 hover:bg-red-800 @click="reset()">
           {{ showAnswer ? 'Replay' : 'Reset' }}
         </div>
         <div btn @click="showAnswer = true">Submit</div>
-        <div btn @click="newGame">New</div>
+        <div btn @click="reset(true)">New</div>
       </div>
 
       <div max-w-88vw of-auto b-2 my4 select-none>

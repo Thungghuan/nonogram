@@ -9,33 +9,27 @@ export const defaultCol = 5
 export const rows = useStorage('rows', defaultRow)
 export const cols = useStorage('cols', defaultCol)
 
-export const board = useStorage(
-  'board',
+const resetBoard = () =>
   Array.from({ length: rows.value }, () =>
     Array.from({ length: cols.value }, () => 0)
   )
-)
-export const solution = useStorage(
-  'solution',
+
+const resetSolution = () =>
   Array.from({ length: rows.value }, () =>
     Array.from({ length: cols.value }, () => (Math.random() < chance ? 1 : 0))
   )
-)
+
+export const board = useStorage('board', resetBoard())
+export const solution = useStorage('solution', resetSolution())
 
 // no need to storage
 export const colCount = ref<number[][]>([])
 export const rowCount = ref<number[][]>([])
 
-export const resetBoard = () => {
-  board.value = Array.from({ length: rows.value }, () =>
-    Array.from({ length: cols.value }, () => 0)
-  )
-}
-
-export const resetSolution = () => {
-  solution.value = Array.from({ length: rows.value }, () =>
-    Array.from({ length: cols.value }, () => (Math.random() < chance ? 1 : 0))
-  )
+export const reset = (isNew: boolean = false) => {
+  board.value = resetBoard()
+  if (isNew) solution.value = resetSolution()
+  generateBoard()
 }
 
 export const generateBoard = () => {
@@ -108,8 +102,7 @@ export const validate = (
   const solutionRowCount = getRowCount(solution)
 
   for (let r = 0; r < solutionRowCount.length; ++r) {
-    if (answerRowCount[r].length !== solutionRowCount[r].length)
-      return 2
+    if (answerRowCount[r].length !== solutionRowCount[r].length) return 2
 
     for (let i = 0; i < solutionRowCount[r].length; ++i) {
       if (answerRowCount[r][i] !== solutionRowCount[r][i]) return 2
@@ -120,8 +113,7 @@ export const validate = (
   const solutionColCount = getColCount(solution)
 
   for (let c = 0; c < solutionColCount.length; ++c) {
-    if (answerColCount[c].length !== solutionColCount[c].length)
-      return 2
+    if (answerColCount[c].length !== solutionColCount[c].length) return 2
 
     for (let i = 0; i < solutionColCount[c].length; ++i) {
       if (answerColCount[c][i] !== solutionColCount[c][i]) return 2
