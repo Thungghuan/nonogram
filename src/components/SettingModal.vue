@@ -66,7 +66,7 @@ const generateNew = () => {
 
           <Counter
             v-model:value="colSet"
-            @update:value="(v) => isLinked && (rowSet = v)"
+            @update:value="(v: number) => isLinked && (rowSet = v)"
           />
 
           <div grid-row="[1,2]" flex justify-center items-center>
@@ -86,7 +86,7 @@ const generateNew = () => {
 
           <Counter
             v-model:value="rowSet"
-            @update:value="(v) => isLinked && (colSet = v)"
+            @update:value="(v: number) => isLinked && (colSet = v)"
           />
         </div>
 
