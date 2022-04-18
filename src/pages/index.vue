@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
 import {
   showAnswer,
   generateBoard,
@@ -7,7 +8,8 @@ import {
   reset
 } from '../logic'
 
-generateBoard()
+const route = useRoute()
+generateBoard(route.query.seed as string)
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { useStorage } from '@vueuse/core'
 import { Router } from 'vue-router'
-import { encodeSeed, showAnswer, markType } from '.'
+import { encodeSeed, decodeSeed, showAnswer, markType } from '.'
 
 const chance = 0.5
 export const defaultRow = 5
@@ -10,12 +10,14 @@ export const defaultCol = 5
 export const rows = useStorage('rows', defaultRow)
 export const cols = useStorage('cols', defaultCol)
 
+const seedStorage = useStorage('seed', '')
+
 const resetBoard = () =>
   Array.from({ length: rows.value }, () =>
     Array.from({ length: cols.value }, () => 0)
   )
 
-const resetSolution = () => {
+const resetSolution = (): number[][] => {
   return Array.from({ length: rows.value }, () =>
     Array.from({ length: cols.value }, () => (Math.random() < chance ? 1 : 0))
   )
@@ -31,17 +33,29 @@ export const rowCount = ref<number[][]>([])
 export const reset = (router: Router, isNew: boolean = false) => {
   board.value = resetBoard()
   if (isNew) {
+    const seed = encodeSeed(solution.value)
     solution.value = resetSolution()
     router.replace({
       query: {
-        seed: encodeSeed(solution.value)
+        seed
       }
     })
+    seedStorage.value = seed
   }
   generateBoard()
 }
 
-export const generateBoard = () => {
+export const generateBoard = (seed: string = '') => {
+  const newBoard = decodeSeed(seed)
+  if (newBoard && seed !== seedStorage.value) {
+    solution.value = newBoard
+    seedStorage.value = seed
+
+    console.log(rows.value)
+
+    board.value = resetBoard()
+  }
+
   showAnswer.value = false
   markType.value = 'check'
 

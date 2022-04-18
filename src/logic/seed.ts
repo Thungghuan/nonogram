@@ -1,3 +1,5 @@
+import { cols, rows } from '.'
+
 const ENCODE_MAP = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdef'
 
 export const encodeSeed = (numbers: number[][]): string => {
@@ -21,4 +23,20 @@ export const encodeSeed = (numbers: number[][]): string => {
   }
 
   return size + splits.map((idx) => ENCODE_MAP[idx]).join('')
+}
+
+export const decodeSeed = (seed: string): number[][] | false => {
+  if (!seed) return false
+
+  console.log(seed)
+
+  const [size, seedStr] = seed.split('-')
+  const [r, c] = size.split('x')
+
+  rows.value = +r
+  cols.value = +c
+
+  return Array.from({ length: rows.value }, () =>
+    Array.from({ length: cols.value }, () => (Math.random() < 0.5 ? 1 : 0))
+  )
 }
