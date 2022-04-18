@@ -29,7 +29,17 @@ export const decodeSeed = (seed: string): number[][] | false => {
   console.log(seed)
 
   const [size, seedStr] = seed.split('-')
+  if (
+    size === undefined ||
+    size === '' ||
+    seedStr === '' ||
+    seedStr === undefined
+  )
+    return false
+
   const [r, c] = size.split('x')
+  if (r === '' || r === undefined || c === '' || c === undefined) return false
+  if (+r <= 1 || +c <= 1) return false
 
   const seedBit = seedStr
     .split('')
@@ -37,8 +47,12 @@ export const decodeSeed = (seed: string): number[][] | false => {
     .map(decToFiveBit)
     .flat()
 
+  if (seedBit.some((v) => v === -1)) return false
+
   rows.value = +r
   cols.value = +c
+
+  if (seedBit.length < rows.value * cols.value) return false
 
   const result = []
 
@@ -65,6 +79,8 @@ const fiveBitToDec = (fiveBit: number[]) => {
 }
 
 const decToFiveBit = (dec: number) => {
+  if (dec === -1) return -1
+
   let base = 16
   const bits = []
 
