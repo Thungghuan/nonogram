@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
+import { useClipboard } from '@vueuse/core'
 import {
   showAnswer,
   generateBoard,
@@ -8,8 +9,12 @@ import {
   reset
 } from '../logic'
 
+const { copy, copied } = useClipboard()
+
 const route = useRoute()
 generateBoard(route.query.seed as string)
+
+const share = () => copy(location.href)
 </script>
 
 <template>
@@ -27,21 +32,25 @@ generateBoard(route.query.seed as string)
       <HelpModal />
 
       <div flex items-center>
-        <span mx-2 icon-btn @click="showHelpModal = true">
+        <span icon-btn @click="showHelpModal = true">
           <div text-2xl i-carbon-help />
         </span>
-        <div my text-4xl font-bold uppercase>Nonogram</div>
         <a
           icon-btn
+          mx-2
           rel="noreferrer"
           href="https://github.com/Thungghuan/nonogram"
           target="_blank"
           title="GitHub - Thungghuan"
         >
-          <div mx-2 text-2xl i-carbon-logo-github></div>
+          <div text-2xl i-carbon-logo-github />
         </a>
-        <span icon-btn @click="showSettingModal = true">
+        <div my text-4xl font-bold uppercase>Nonogram</div>
+        <span mx-2 icon-btn @click="showSettingModal = true">
           <div text-2xl i-carbon-settings />
+        </span>
+        <span icon-btn @click="share">
+          <div text-2xl rotate-y-180 i-carbon-reply />
         </span>
       </div>
 
@@ -66,6 +75,10 @@ generateBoard(route.query.seed as string)
       </div>
 
       <Answer v-if="showAnswer" />
+
+      <div p4 absolute z-20 bg-emerald-100 rd-xl top="1/2" v-if="copied">
+        😋 Share link copied!
+      </div>
     </div>
   </div>
 </template>
