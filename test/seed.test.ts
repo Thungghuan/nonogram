@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { encodeSeed, decodeSeed } from '../src/logic/seed'
+import { encodeSeed, decodeSeed, ENCODE_MAP, shuffle } from '../src/logic/seed'
+import seedrandom from 'seedrandom'
 
 describe('seed', () => {
   it('decode from encode', () => {
@@ -35,5 +36,20 @@ describe('invalid seed', () => {
 
   it('invalid seed char', () => {
     expect(decodeSeed('3x3-ABDDefg')).toBeFalsy()
+  })
+})
+
+describe('pseudo random seed', () => {
+  it('always the same', () => {
+    const seed = 'nonogram'
+    const rng = seedrandom(seed).int32
+
+    expect(rng()).toBe(878448936)
+    expect(rng()).toBe(-248000092)
+    expect(rng()).toBe(63657219)
+    expect(rng()).toBe(986913258)
+    expect(rng()).toBe(-865143543)
+    expect(rng()).toBe(841798965)
+    expect(rng()).toBe(-1232052834)
   })
 })

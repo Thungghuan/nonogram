@@ -1,6 +1,30 @@
+import seedrandom from 'seedrandom'
 import { cols, rows } from '.'
 
-const ENCODE_MAP = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdef'
+const SEED = 'nonogram'
+const SHUFFLE_TIMES = 30 // HNOPSVWXZIdDMaYbAKQGCeBEfRTJFcUL
+
+const getPseRandomNumber = seedrandom(SEED).int32 // pseudo random seed
+
+export const ENCODE_MAP = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdef'
+
+export const shuffle = (times: number, str: string) => {
+  let shuffled = str
+  for (let i = 0; i < times; ++i) {
+    const pseRdmIdx = Math.abs(getPseRandomNumber() % str.length)
+
+    let lastShuffled = shuffled
+
+    shuffled = ''.concat(
+      ...lastShuffled.split(lastShuffled[pseRdmIdx]),
+      lastShuffled[pseRdmIdx]
+    )
+  }
+
+  return shuffled
+}
+
+const shuffledMap = shuffle(SHUFFLE_TIMES, ENCODE_MAP)
 
 export const encodeSeed = (numbers: number[][]): string => {
   const splits = []
@@ -20,13 +44,11 @@ export const encodeSeed = (numbers: number[][]): string => {
     splits.push(fiveBitToDec(nums.slice(i, i + 5)))
   }
 
-  return size + splits.map((idx) => ENCODE_MAP[idx]).join('')
+  return size + splits.map((idx) => shuffledMap[idx]).join('')
 }
 
 export const decodeSeed = (seed: string): number[][] | false => {
   if (!seed) return false
-
-  console.log(seed)
 
   const [size, seedStr] = seed.split('-')
   if (
@@ -43,7 +65,7 @@ export const decodeSeed = (seed: string): number[][] | false => {
 
   const seedBit = seedStr
     .split('')
-    .map((c) => ENCODE_MAP.indexOf(c)!)
+    .map((c) => shuffledMap.indexOf(c)!)
     .map(decToFiveBit)
     .flat()
 
@@ -63,8 +85,6 @@ export const decodeSeed = (seed: string): number[][] | false => {
     }
     result.push(rowBits)
   }
-
-  console.log(result)
 
   return result
 }
