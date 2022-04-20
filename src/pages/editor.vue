@@ -46,6 +46,9 @@ const getLinkClass = () => {
       />
 
       <div flex items-center>
+        <span icon-btn @click="$router.replace('/')">
+          <div text-2xl i-carbon-home />
+        </span>
         <span mx-2 icon-btn @click="showEditorHelp = true">
           <div text-2xl i-carbon-help />
         </span>

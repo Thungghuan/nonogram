@@ -85,6 +85,15 @@ const generateNew = () => {
         </div>
 
         <div btn @click="generateNew">Generate new game</div>
+        <div
+          my2
+          btn
+          bg-sky-400
+          hover:bg-sky-600
+          @click=";[(showSettingModal = false), $router.replace('/editor')]"
+        >
+          Customize
+        </div>
       </div>
     </div>
   </div>
