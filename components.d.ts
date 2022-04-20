@@ -11,6 +11,8 @@ declare module '@vue/runtime-core' {
     CloseModal: typeof import('./src/components/CloseModal.vue')['default']
     ColCount: typeof import('./src/components/ColCount.vue')['default']
     Counter: typeof import('./src/components/Counter.vue')['default']
+    EditorBoard: typeof import('./src/components/EditorBoard.vue')['default']
+    EditorHelp: typeof import('./src/components/EditorHelp.vue')['default']
     HelpModal: typeof import('./src/components/HelpModal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
