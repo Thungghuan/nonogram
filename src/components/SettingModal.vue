@@ -12,24 +12,15 @@ onClickOutside(settingModalRef, () => {
 })
 
 const getSettingModalClass = () => {
-  if (showSettingModal.value) {
-    return 'translate-y-0'
-  } else {
-    return '-translate-y-full'
-  }
+  return showSettingModal.value ? 'translate-y-0' : '-translate-y-full'
 }
-
-const isLinked = ref(true)
-const getLinkClass = () => {
-  if (isLinked.value) {
-    return 'b-2 opacity-100'
-  } else {
-    return 'opacity-20'
-  }
-}
-
 const rowSet = ref(rows.value)
 const colSet = ref(cols.value)
+
+const isLinked = ref(rowSet.value === colSet.value)
+const getLinkClass = () => {
+  return isLinked.value ? 'b-2 opacity-100' : 'opacity-20'
+}
 
 const generateNew = () => {
   rows.value = rowSet.value

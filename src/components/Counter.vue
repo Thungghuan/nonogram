@@ -12,11 +12,9 @@ const dec = () => {
   emits('update:value', value.value <= 2 ? 2 : value.value - 1)
 }
 const decClass = () => {
-  if (value.value <= 2) {
-    return 'text-gray-200 cursor-not-allowed'
-  } else {
-    return 'text-black cursor-pointer'
-  }
+  value.value <= 2
+    ? 'text-gray-200 cursor-not-allowed'
+    : 'text-black cursor-pointer'
 }
 
 const inc = () => {

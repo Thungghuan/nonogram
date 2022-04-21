@@ -23,7 +23,7 @@ watchEffect(() => {
   board.value = resetBoard()
 })
 
-const isLinked = ref(true)
+const isLinked = ref(rowSet.value === colSet.value)
 const getLinkClass = () => {
   return isLinked.value ? 'b-black opacity-100' : 'b-transparent opacity-20'
 }
