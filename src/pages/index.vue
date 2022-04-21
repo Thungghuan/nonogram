@@ -6,7 +6,9 @@ import {
   generateBoard,
   showSettingModal,
   showHelpModal,
-  reset
+  reset,
+  encodeSeed,
+  solution
 } from '../logic'
 
 const { copy, copied } = useClipboard()
@@ -14,7 +16,13 @@ const { copy, copied } = useClipboard()
 const route = useRoute()
 generateBoard(route.query.seed as string)
 
-const share = () => copy(location.href)
+const share = () => {
+  if (route.query.seed) {
+    copy(location.href)
+  } else {
+    copy(location.href + '?seed=' + encodeSeed(solution.value))
+  }
+}
 </script>
 
 <template>
