@@ -8,7 +8,7 @@ const showEditorHelp = ref(false)
 const { copy, copied } = useClipboard()
 const share = () => {
   const seed = encodeSeed(board.value!)
-  copy(`${location.protocol}\\${location.host}/?seed=${seed}`)
+  copy(`${location.origin}/?seed=${seed}`)
 }
 
 const rowSet = ref(rows.value)
